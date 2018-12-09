@@ -1,0 +1,20 @@
+.menu-style {
+    list-style: none;
+    padding-bottom: 0px;
+    background-color: darkblue;
+}
+
+.menu-item {
+    width: 25%;
+    padding-bottom: 0px;
+}
+
+.menu-item-font {
+    color: aquamarine;
+}
+
+a:hover {
+    color: skyblue;
+}
+
+
