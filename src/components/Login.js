@@ -5,7 +5,8 @@ class Login extends Component {
         super(props);
 
         this.state = {
-           value: ''
+            value: '',
+            items: []
         };
         this.loginHandleClick = this.loginHandleClick.bind(this);
         this.registrationHandleClick = this.registrationHandleClick.bind(this);
@@ -34,12 +35,26 @@ class Login extends Component {
     }
 
     loginHandleClick = () => {
-
-        return (
-            <div>
-                <h3>HELLO</h3>
-            </div>
-        )
+        fetch('http://localhost:8080/user/create/', {
+            method: 'POST',
+            dataType: 'JSON',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: '{ "name": "yourValue",  "passwoed": "ourOtherValue" }'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                const iii = data;
+                console.log(iii);
+                alert(iii);
+                this.setState({items: data});
+            })
+            .catch(err => {
+                console.log(err);
+            });
     };
     registrationHandleClick = () => {
         console.log("REGISTRATION");
