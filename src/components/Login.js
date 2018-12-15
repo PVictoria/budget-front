@@ -13,8 +13,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log("render");
-        console.log(this.state.id)
         return (
             <div>
                 <dev className="input-group container align-middle">
@@ -37,7 +35,6 @@ class Login extends Component {
     }
 
     loginHandleClick = () => {
-        // console.log(this._password.value)
         fetch('http://localhost:8080/user', {
             method: 'POST',
             dataType: 'JSON',
@@ -50,11 +47,7 @@ class Login extends Component {
                 return res.json();
             })
             .then(data => {
-                const iii = data;
-                console.log(iii);
                 this.setState({id: data.id});
-                console.log("Login id " + this.state.id);
-                // this.props..s.push(this.state.id)
                 localStorage.setItem('userSecretId', this.state.id);
                 this.props.history.push({pathname: '/greeting', state: {id: this.state.id}})
             })
@@ -64,7 +57,6 @@ class Login extends Component {
     };
     //todo: добавить проверку на совпадение паролей
     registrationHandleClick = () => {
-        console.log("REGISTRATION");
         fetch('http://localhost:8080/user/create/', {
             method: 'POST',
             dataType: 'JSON',
@@ -77,10 +69,7 @@ class Login extends Component {
                 return res.json();
             })
             .then(data => {
-                const iii = data;
-                console.log(iii);
                 this.setState({id: data.id});
-                console.log(this.state.id)
                 this.props.history.push('/greeting')
             })
             .catch(err => {
