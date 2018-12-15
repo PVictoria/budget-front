@@ -5,7 +5,7 @@ class Login extends Component {
         super(props);
 
         this.state = {
-            value: '',
+            id: '',
             items: []
         };
         this.loginHandleClick = this.loginHandleClick.bind(this);
@@ -13,6 +13,8 @@ class Login extends Component {
     }
 
     render() {
+        console.log("render");
+        console.log(this.state.id)
         return (
             <div>
                 <dev className="input-group container align-middle">
@@ -35,13 +37,14 @@ class Login extends Component {
     }
 
     loginHandleClick = () => {
+        // console.log(this._password.value)
         fetch('http://localhost:8080/user/create/', {
             method: 'POST',
             dataType: 'JSON',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: '{ "name": "yourValue",  "passwoed": "ourOtherValue" }'
+            body: '{ "name": "' + this._username.value + '",  "password": "' + this._password.value + '" }'
         })
             .then(res => {
                 return res.json();
@@ -49,8 +52,9 @@ class Login extends Component {
             .then(data => {
                 const iii = data;
                 console.log(iii);
-                alert(iii);
-                this.setState({items: data});
+                this.setState({id: data.id});
+                console.log(this.state.id)
+                this.props.history.push('/greeting')
             })
             .catch(err => {
                 console.log(err);
