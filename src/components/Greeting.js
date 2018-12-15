@@ -5,7 +5,11 @@ class Greeting extends Component {
 
     constructor(props) {
         super(props);
+        console.log("id" + props.history.id);
+        console.log("local" + localStorage.getItem('userSecretId'));
+
         this.state = {
+            id: localStorage.getItem('userSecretId'),
             items: []
 
         };
@@ -13,22 +17,24 @@ class Greeting extends Component {
 
 
     componentDidMount() {
-
-        fetch("http://localhost:8080/1", {
+        console.log(this.id);
+        // console.log(this.props.name);
+        // console.log("state " + this.state.id);
+        fetch("http://localhost:8080/user/" + this.state.id, {
             method: "GET",
             dataType: "JSON",
         })
             .then((resp) => {
 
-                console.log("resp");
+                // console.log("resp");
                 const copy = resp.json();
-                console.log(copy);
+                // console.log(copy);
                 return copy;
             })
             .then((data) => {
-                console.log("data");
-                const iii = data;
-                console.log(iii);
+                // console.log("data");
+                // const iii = data;
+                // console.log(iii);
                 this.setState({items: data});
             })
             .catch((error) => {
