@@ -35,6 +35,9 @@ class Login extends Component {
     }
 
     loginHandleClick = () => {
+        if (this._username.value.length === 0 || this._password.value.length === 0) {
+            alert("Имя или пароль не должны быть пустыми")
+        }
         fetch('http://localhost:8080/user', {
             method: 'POST',
             dataType: 'JSON',
@@ -53,28 +56,36 @@ class Login extends Component {
             })
             .catch(err => {
                 console.log(err);
+                alert("Пользователь с таким именеи и паролем не найден")
             });
     };
-    //todo: добавить проверку на совпадение паролей
+    //todo: второй раз пароль не скрывается
     registrationHandleClick = () => {
-        fetch('http://localhost:8080/user/create/', {
-            method: 'POST',
-            dataType: 'JSON',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: '{ "name": "' + this._username.value + '",  "password": "' + this._password.value + '" }'
-        })
-            .then(res => {
-                return res.json();
+        var password2 = prompt("Please enter your password again", "");
+        if (password2 !== this._password.value) {
+            alert("Пароли не совпали")
+        } else {
+            fetch('http://localhost:8080/user/create/', {
+                method: 'POST',
+                dataType: 'JSON',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: '{ "name": "' + this._username.value + '",  "password": "' + this._password.value + '" }'
             })
-            .then(data => {
-                this.setState({id: data.id});
-                this.props.history.push('/greeting')
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    this.setState({id: data.id});
+                    console.log(this.state.id);
+                    localStorage.setItem('userSecretId', this.state.id);
+                    this.props.history.push('/greeting')
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
     }
 
 }
