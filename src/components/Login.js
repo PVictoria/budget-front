@@ -28,7 +28,7 @@ class Login extends Component {
                 </dev>
                 <dev className="btn-group container align-middle">
                     <button onClick={this.loginHandleClick}>LOGIN</button>
-                    <button onClick={this.registrationHandleClick}>REGISTRATION</button>
+                    <button onClick={this.registrationHandleClick}>CREATE</button>
                 </dev>
             </div>
         )
@@ -61,9 +61,13 @@ class Login extends Component {
     };
     //todo: второй раз пароль не скрывается
     registrationHandleClick = () => {
+        if (this._username.value.length === 0 || this._password.value.length === 0) {
+            alert("Имя или пароль не должны быть пустыми");
+            return;
+        }
         var password2 = prompt("Please enter your password again", "");
         if (password2 !== this._password.value) {
-            alert("Пароли не совпали")
+            alert("Пароли не совпали");
         } else {
             fetch('http://localhost:8080/user/create/', {
                 method: 'POST',
