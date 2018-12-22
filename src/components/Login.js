@@ -81,6 +81,12 @@ class Login extends Component {
                     return res.json();
                 })
                 .then(data => {
+                    if (data.status === 500) {
+                        console.log("ERRRR");
+                        alert("Пользователь с таким именем уже существкет");
+                        return;
+                    }
+
                     this.setState({id: data.id});
                     console.log(this.state.id);
                     localStorage.setItem('userSecretId', this.state.id);
@@ -88,6 +94,7 @@ class Login extends Component {
                 })
                 .catch(err => {
                     console.log(err);
+                    alert("Не удалось создать пользователя");
                 });
         }
     }
