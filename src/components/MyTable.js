@@ -73,11 +73,6 @@ class MyTable extends React.Component {
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15" style={{width: '75%'}}>
                     <h1>Articles</h1>
-                    <input ref={input => (this._article = input)}
-                           name="article"
-                           required="true"
-                           placeholder="Article"/>
-                    <button onClick={this.createHandleClick}>Create</button>
                     <button onClick={this.deleteHandleClick}>Delete</button>
                     <ReactTable data={this.state.items}
                                 columns={columns}
@@ -120,17 +115,6 @@ class MyTable extends React.Component {
 
     };
 
-    createHandleClick = () => {
-        fetch("http://localhost:8080/article", {
-            method: "POST",
-            dataType: "JSON",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: '{ "name" : "' + this._article.value + '" }'
-        });
-        window.location.reload();
-    };
 
     deleteArticle(value) {
         fetch("http://localhost:8080/article/" + value, {

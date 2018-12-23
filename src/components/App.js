@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css"
 import Navigation from "./Navigation";
 import Greeting from "./Greeting";
 import MyTable from "./MyTable";
+import CreateArticle from "./CreateArticle";
 
 const App = () => (
     <Switch>
@@ -12,6 +13,7 @@ const App = () => (
         <Route path='/navigation' component={Navigation}/>
         <Route path='/greeting' component={Greeting}/>
         <Route path='/articles' component={MyTable}/>
+        <Route path='/create-article' component={CreateArticle}/>
     </Switch>
 );
 
