@@ -19,7 +19,7 @@ class Navigation extends Component {
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/login'>
+                        <a className="nav-link menu-item-font" href='/create-operation'>
                             <i className="fa fa-book"/>Create operation
                         </a>
                     </li>
@@ -40,7 +40,7 @@ class Navigation extends Component {
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/login'>
+                        <a className="nav-link menu-item-font" href='/create-operation'>
                             <i className="fa fa-book"/>Bar graph
                         </a>
                     </li>

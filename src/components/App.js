@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import Greeting from "./Greeting";
 import MyTable from "./MyTable";
 import CreateArticle from "./CreateArticle";
+import CreateOperation from "./CreateOperation";
 
 const App = () => (
     <Switch>
@@ -14,6 +15,7 @@ const App = () => (
         <Route path='/greeting' component={Greeting}/>
         <Route path='/articles' component={MyTable}/>
         <Route path='/create-article' component={CreateArticle}/>
+        <Route path='/create-operation' component={CreateOperation}/>
     </Switch>
 );
 

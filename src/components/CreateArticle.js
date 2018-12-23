@@ -8,7 +8,7 @@ class CreateArticle extends React.Component {
             <div className="row">
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Creaate Article</h1>
+                    <h1>Create Article</h1>
                     <input ref={input => (this._article = input)}
                            id="article"
                            name="article"
@@ -24,7 +24,7 @@ class CreateArticle extends React.Component {
 
     createHandleClick = () => {
         if (this._article.value.length === 0) {
-            alert("Название не может бытьпустым");
+            alert("Название не может быть пустым");
             return;
         }
         fetch("http://localhost:8080/article", {
@@ -38,7 +38,7 @@ class CreateArticle extends React.Component {
             if (res.ok) {
                 this.props.history.push("/articles")
             } else {
-                alert("Статья стаким названием уже существует")
+                alert("Статья стаким названием уже существует");
             }
         });
     };

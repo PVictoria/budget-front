@@ -74,4 +74,7 @@ a:hover {
     transition-property: width, min-width, padding, opacity;
 }
 
+.Dropdown-root {
+    width: 300px;
+}
 
