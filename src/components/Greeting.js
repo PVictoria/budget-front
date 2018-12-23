@@ -5,8 +5,8 @@ class Greeting extends Component {
 
     constructor(props) {
         super(props);
-        console.log("id" + props.history.id);
-        console.log("local" + localStorage.getItem('userSecretId'));
+        console.log("id " + props.history.id);
+        console.log("local " + localStorage.getItem('userSecretId'));
 
         this.state = {
             id: localStorage.getItem('userSecretId'),
@@ -17,9 +17,11 @@ class Greeting extends Component {
 
 
     componentDidMount() {
-        console.log(this.id);
-        // console.log(this.props.name);
-        // console.log("state " + this.state.id);
+        console.log("greeting " + this.state.id);
+        if (this.state.id === undefined) {
+            this.props.history.push('/login');
+            return;
+        }
         fetch("http://localhost:8080/user/" + this.state.id, {
             method: "GET",
             dataType: "JSON",
@@ -46,7 +48,7 @@ class Greeting extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-sm-3  menu-style" style={{width: '75%'}}><Navigation/></div>
+                <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15  menu-style" style={{width: '75%'}}>
                     <h2 className="menu-item-font  menu-style">Hello, {this.state.items.name}!</h2>
                 </div>

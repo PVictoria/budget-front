@@ -5,7 +5,7 @@
 }
 
 .menu-item {
-    width: 25%;
+    width: 100%;
     padding-bottom: 0px;
 }
 
@@ -15,6 +15,63 @@
 
 a:hover {
     color: skyblue;
+}
+
+.ReactTable .rt-thead {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ReactTable .rt-tr-group {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch
+}
+
+.ReactTable .rt-tr {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    /*display: -webkit-inline-box;*/
+    display: -ms-inline-flexbox;
+    display: inline-flex
+}
+
+.ReactTable .rt-th,
+.ReactTable .rt-td {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 7px 5px;
+    overflow: hidden;
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    -webkit-transition-property: width, min-width, padding, opacity;
+    transition-property: width, min-width, padding, opacity;
 }
 
 

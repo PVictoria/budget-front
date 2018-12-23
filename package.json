@@ -9,11 +9,13 @@
     "prompt-password": "^1.2.0",
     "react": "^16.5.2",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap-table": "^4.3.1",
     "react-dom": "^16.5.2",
     "react-metismenu": "^1.4.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "react-table": "^6.8.6"
   },
   "scripts": {
     "start": "react-scripts start",

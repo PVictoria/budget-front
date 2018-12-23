@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./style.css"
 
+//todo: refactor links
 class Navigation extends Component {
     render() {
         return (
@@ -8,13 +9,50 @@ class Navigation extends Component {
                 <nav className="navigation grid grid-gutters large-grid-fit med-grid-fit small-grid-1of2 menu-style">
                     <li className="menu-item nav-item">
                         <a className="nav-link menu-item-font"
-                           href="https://leanpub.com/reactspeedcoding">
+                           href="http://localhost:3000/login">
                             <i className="fa fa-book"></i> Book
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link  menu-item-font"
-                           href="https://github.com/manavsehgal/reactspeedcoding">Link</a>
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Operation list
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Create operation
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Balance
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/articles'>
+                            <i className="fa fa-book"/>Articles
+                        </a>
+                    </li>
+
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Create article
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Bar graph
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Linear graph
+                        </a>
+                    </li>
+                    <li className="menu-item nav-item">
+                        <a className="nav-link menu-item-font" href='/login'>
+                            <i className="fa fa-book"/>Pie chart
+                        </a>
                     </li>
                 </nav>
             </div>
