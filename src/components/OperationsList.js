@@ -9,13 +9,10 @@ class OperationsList extends React.Component {
 
     constructor(props) {
         super(props);
-
-
         this.state = {
             id: localStorage.getItem('userSecretId'),
             selected: [],
             selectedNames: [],
-            // selectAll: 0,
             selectedDate: null,
             items: []
         };
@@ -24,21 +21,7 @@ class OperationsList extends React.Component {
 
     componentDidMount() {
         console.log("mount");
-        fetch("http://localhost:8080/operation/" + this.state.id, {
-            method: "GET",
-            dataType: "JSON",
-        })
-            .then((resp) => {
-                const copy = resp.json();
-                return copy;
-            })
-            .then((data) => {
-                this.setState({items: data});
-            })
-            .catch((error) => {
-                console.log(error, "catch the hoop")
-            });
-
+        this.findAllForUser();
     }
 
     render() {
@@ -103,25 +86,96 @@ class OperationsList extends React.Component {
     }
 
     findHandleClick = () => {
-        //if (this._article.value.length > 0 && this.state.selectedDate.value.length === 0) {
-        this.findArticle();
-        //}
+        console.log("find " + this._article.value.length);
+        console.log("find " + this.state.selectedDate);
+        if (this._article.value.length > 0 && this.state.selectedDate === null) {
+            this.findByArticle();
+        } else if (this._article.value.length === 0 && this.state.selectedDate !== null) {
+            this.findByDate()
+        } else if (this._article.value.length > 0 && this.state.selectedDate !== null) {
+            this.findByArticleAndDate()
+        } else {
+            this.findAllForUser();
+        }
     };
 
-    findArticle() {
-        fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value, {
+
+    findAllForUser() {
+        fetch("http://localhost:8080/operation/" + this.state.id, {
             method: "GET",
             dataType: "JSON",
         })
             .then((resp) => {
-                const copy = resp.json();
-                return copy;
+                return resp.json();
             })
             .then((data) => {
                 this.setState({items: data});
             })
             .catch((error) => {
                 console.log(error, "catch the hoop")
+            });
+    }
+
+    findByArticle() {
+        fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value, {
+            method: "GET",
+            dataType: "JSON",
+        })
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((data) => {
+
+                if (data.status === 500) {
+                    alert("Параметры фильтра не корректны");
+                    return;
+                }
+                this.setState({items: data});
+            })
+            .catch((error) => {
+                this.props.history.push("/login")
+            });
+    }
+
+    findByDate() {
+        var date = document.getElementById("dateOperation").value;
+        fetch("http://localhost:8080/operation/" + this.state.id + '/date/' + date, {
+            method: "GET",
+            dataType: "JSON",
+        })
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((data) => {
+                if (data.status === 500) {
+                    alert("Параметры фильтра не корректны");
+                    return;
+                }
+                this.setState({items: data});
+            })
+            .catch((error) => {
+                this.props.history.push("/login")
+            });
+    }
+
+    findByArticleAndDate() {
+        var date = document.getElementById("dateOperation").value;
+        fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value + '/date/' + date, {
+            method: "GET",
+            dataType: "JSON",
+        })
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((data) => {
+                if (data.status === 500) {
+                    alert("Параметры фильтра не корректны");
+                    return;
+                }
+                this.setState({items: data});
+            })
+            .catch((error) => {
+                this.props.history.push("/login")
             });
     }
 
@@ -146,12 +200,10 @@ class OperationsList extends React.Component {
 
         console.log("DELETEON-------------");
         this.state.selectedNames.forEach(value => {
-            console.log('list ' + value)
+            console.log('list ' + value);
             this.deleteArticle(value);
         });
         console.log("DELETEON......................");
-
-        // console.log(this.state.selectedNames[1]);
         console.log(this.selectedNames);
         window.location.reload();
 
@@ -160,6 +212,7 @@ class OperationsList extends React.Component {
     clearHandleClick = () => {
         document.getElementById("article").value = "";
         document.getElementById("dateOperation").value = "";
+        this.setState({selectedDate: null});
     };
 
 
@@ -171,7 +224,6 @@ class OperationsList extends React.Component {
             .catch((error) => {
                 console.log(error, "catch the hoop")
             });
-
     }
 }
 
