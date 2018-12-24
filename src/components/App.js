@@ -8,6 +8,7 @@ import MyTable from "./MyTable";
 import CreateArticle from "./CreateArticle";
 import CreateOperation from "./CreateOperation";
 import OperationsList from "./OperationsList";
+import Balance from "./Balance";
 
 const App = () => (
     <Switch>
@@ -18,6 +19,7 @@ const App = () => (
         <Route path='/create-article' component={CreateArticle}/>
         <Route path='/create-operation' component={CreateOperation}/>
         <Route path='/operations' component={OperationsList}/>
+        <Route path='/balance' component={Balance}/>
     </Switch>
 );
 

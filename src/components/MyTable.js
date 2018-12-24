@@ -28,8 +28,7 @@ class MyTable extends React.Component {
             dataType: "JSON",
         })
             .then((resp) => {
-                const copy = resp.json();
-                return copy;
+                return resp.json();
             })
             .then((data) => {
                 this.setState({items: data});
@@ -111,7 +110,7 @@ class MyTable extends React.Component {
 
         // console.log(this.state.selectedNames[1]);
         console.log(this.selectedNames);
-        window.location.reload();
+        // window.location.reload();
 
     };
 
@@ -121,6 +120,13 @@ class MyTable extends React.Component {
             method: "DELETE",
             dataType: "JSON",
         })
+            .then(res => {
+                if (res.status === 500) {
+                    alert("Невозможно удалить эту статью, возможно, она где-то используется");
+                } else {
+                    window.location.reload();
+                }
+            })
             .catch((error) => {
                 console.log(error, "catch the hoop")
             });
