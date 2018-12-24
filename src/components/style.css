@@ -78,3 +78,7 @@ a:hover {
     width: 300px;
 }
 
+.month-picker {
+    height: 100px;
+    visibility: visible;
+}
