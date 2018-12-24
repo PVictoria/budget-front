@@ -14,7 +14,7 @@ class Navigation extends Component {
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/login'>
+                        <a className="nav-link menu-item-font" href='/operations'>
                             <i className="fa fa-book"/>Operation list
                         </a>
                     </li>

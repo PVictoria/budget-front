@@ -50,14 +50,16 @@ class CreateOperation extends React.Component {
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15" style={{width: '75%'}}>
                     <h1>Create Operation</h1>
-                    <Dropdown
-                        options={this.state.items.map(value => value.name)}
-                        onChange={item => this._selectedArticle = item.value}
-                        placeholder="Select an article"
-                        style={{width: '50px'}}/>
-                    <input ref={input => (this._sum = input)}
+                    <Dropdown id={"article"}
+                              name={"article"}
+                              options={this.state.items.map(value => value.name)}
+                              onChange={item => this._selectedArticle = item.value}
+                              placeholder="Select an article"
+                              style={{width: '50px'}}/>
+                    <input id={"sum"}
+                           ref={input => (this._sum = input)}
                            placeholder="Credit/debit"/>
-                    <DatePicker id={"dataOperation"}
+                    <DatePicker id={"dateOperation"}
                                 dateFormat="yyyy-MM-dd"
                                 selected={this.state.selectedDate}
                                 onChange={(date) => this.setState({selectedDate: date})}
@@ -74,16 +76,15 @@ class CreateOperation extends React.Component {
 
     createHandleClick = () => {
         console.log("mm " + this._selectedArticle);
-        // console.log("mm " + this.state.selectedDate.toLocaleString().slice(0, 10));
-        // console.log("sum " + this._sum.value);
-        var date = document.getElementById("dataOperation").value;
-        // if (this._article.value.length === 0) {
-        //     alert("Название не может быть пустым");
-        //     return;
-        // }
+        var date = document.getElementById("dateOperation").value;
+        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || date === undefined) {
+            alert("Не все поля заполнены");
+            return;
+        }
         var debit = null;
         var credit = null;
-        if (this._sum.value > 0) {
+        console.log(parseInt(this._sum.value));
+        if (parseInt(this._sum.value) > 0) {
             debit = this._sum.value
         } else {
             credit = this._sum.value
@@ -107,7 +108,7 @@ class CreateOperation extends React.Component {
             body: operationJson
         }).then(res => {
             if (res.ok) {
-                this.props.history.push("/articles")
+                this.props.history.push("/operations")
             } else {
                 alert("Не удалось сохранить операцию");
             }
@@ -115,7 +116,9 @@ class CreateOperation extends React.Component {
     };
 
     cancelHandleClick = () => {
-        document.getElementById("article").value = "";
+        document.getElementsByClassName("Dropdown-root").value = "";
+        document.getElementById("sum").value = "";
+        document.getElementById("dateOperation").value = "";
     };
 }
 
