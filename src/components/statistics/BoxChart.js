@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import BarChart from 'react-bar-chart';
-// import RTChart from 'react-rt-chart';
 import Dropdown from "react-dropdown";
 import * as d3 from "d3";
 
-const data = [
-    {text: 'Man', value: 500},
-    {text: 'Woman', value: 300}
-];
 
 const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
@@ -21,7 +16,9 @@ export default class BoxChart extends Component {
             id: localStorage.getItem('userSecretId'),
             width: 500,
             items: [],
-            // data : []
+            credit: [],
+            debit: [],
+            amount: [],
         };
     }
 
@@ -59,10 +56,7 @@ export default class BoxChart extends Component {
     };
 
     render() {
-
-        // this.state.items.forEach(value => this.state.data.push(value));
-
-
+        this.updateBarValues();
         console.log("new date " + new Date());
         const scale = d3.scaleOrdinal().range(['red', 'blue', 'green']);
         return (
@@ -82,15 +76,57 @@ export default class BoxChart extends Component {
                               colorScale={scale}
                               ylabel='Quantity'
                               width={this.state.width}
-                              height={500}
+                              height={200}
                               margin={margin}
-                              data={this.state.items}
-                        // data={data}
+                              data={this.state.credit}
+                              onBarClick={this.handleBarClick}
+                    />
+                    <BarChart colorByLabel={false}
+                              colorScale={scale}
+                              ylabel='Debit'
+                              width={this.state.width}
+                              height={200}
+                              margin={margin}
+                              data={this.state.debit}
+                              onBarClick={this.handleBarClick}
+                    />
+                    <BarChart colorByLabel={false}
+                              colorScale={scale}
+                              ylabel='Amount'
+                              width={this.state.width}
+                              height={200}
+                              margin={margin}
+                              data={this.state.amount}
                               onBarClick={this.handleBarClick}
 
+
                     />
+
                 </div>
             </div>
         );
+    }
+
+    updateBarValues() {
+        this.state.credit = [];
+        this.state.debit = [];
+        this.state.amount = [];
+        this.state.items.forEach(value => {
+            var creditItem = {
+                text: value.text,
+                value: value.credit
+            };
+            var debitIdem = {
+                text: value.text,
+                value: value.debit
+            };
+            var amountItem = {
+                text: value.text,
+                value: value.amount
+            };
+            this.state.credit.push(creditItem);
+            this.state.debit.push(debitIdem);
+            this.state.amount.push(amountItem);
+        });
     }
 }
