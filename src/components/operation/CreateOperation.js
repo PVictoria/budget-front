@@ -1,9 +1,9 @@
 import React from "react";
 import Dropdown from 'react-dropdown';
-import Navigation from "./Navigation";
+import Navigation from "../Navigation";
 import DatePicker from "react-datepicker";
 
-import "./style.css";
+import "../style/style.css";
 import 'react-dropdown/style.css';
 import "react-datepicker/dist/react-datepicker.css";
 

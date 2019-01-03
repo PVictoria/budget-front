@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./style.css"
+import "./style/style.css"
 
 //todo: refactor links
 class Navigation extends Component {
@@ -40,12 +40,12 @@ class Navigation extends Component {
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/login'>
+                        <a className="nav-link menu-item-font" href='/box-chart'>
                             <i className="fa fa-book"/>Bar graph
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/login'>
+                        <a className="nav-link menu-item-font" href='/line-chart'>
                             <i className="fa fa-book"/>Linear graph
                         </a>
                     </li>

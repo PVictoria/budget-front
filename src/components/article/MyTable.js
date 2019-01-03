@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from "react-table";
-import Navigation from "./Navigation";
+import Navigation from "../Navigation";
 // // import BootstrapTable, {TableHeaderColumn}  from "bootstrap";
 // // import $ from 'jquery';
 // import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';

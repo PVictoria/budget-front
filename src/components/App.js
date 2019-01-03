@@ -4,11 +4,14 @@ import {Route, Switch} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.css"
 import Navigation from "./Navigation";
 import Greeting from "./Greeting";
-import MyTable from "./MyTable";
-import CreateArticle from "./CreateArticle";
-import CreateOperation from "./CreateOperation";
-import OperationsList from "./OperationsList";
-import Balance from "./Balance";
+import MyTable from "./article/MyTable";
+import CreateArticle from "./article/CreateArticle";
+import CreateOperation from "./operation/CreateOperation";
+import OperationsList from "./operation/OperationsList";
+import Balance from "./balance/Balance";
+import LinearChart from "./statistics/LinearChart";
+import BoxChart from "./statistics/BoxChart";
+import PieStatChart from "./statistics/PieStatChart";
 
 const App = () => (
     <Switch>
@@ -20,6 +23,9 @@ const App = () => (
         <Route path='/create-operation' component={CreateOperation}/>
         <Route path='/operations' component={OperationsList}/>
         <Route path='/balance' component={Balance}/>
+        <Route path='/line-chart' component={LinearChart}/>
+        <Route path='/box-chart' component={BoxChart}/>
+        <Route path='/pie-chart' component={PieStatChart}/>
     </Switch>
 );
 

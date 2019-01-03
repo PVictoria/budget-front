@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from "react-table";
-import Navigation from "./Navigation";
+import Navigation from "../Navigation";
 import DatePicker from "react-datepicker/es";
 
 class Balance extends React.Component {

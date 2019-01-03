@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from "react-table";
-import Navigation from "./Navigation";
+import Navigation from "../Navigation";
 import 'react-month-picker/css/month-picker.css'
 import DatePicker from "react-datepicker/es";
 
