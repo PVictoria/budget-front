@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactTable from "react-table";
 import Navigation from "../Navigation";
-// // import BootstrapTable, {TableHeaderColumn}  from "bootstrap";
-// // import $ from 'jquery';
-// import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-//
 
 class MyTable extends React.Component {
 
@@ -15,14 +11,16 @@ class MyTable extends React.Component {
         this.state = {
             selected: [],
             selectedNames: [],
-            // selectAll: 0,
             items: []
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         fetch("http://localhost:8080/article", {
             method: "GET",
             dataType: "JSON",

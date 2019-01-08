@@ -20,16 +20,14 @@ export default class BoxChart extends Component {
             credit: [],
             debit: [],
             amount: [],
-            // timeRanges : [{value: 'year', label: 'year'}, {label: 'за все время', value: 'allTime'}],
         };
     }
 
     componentDidMount() {
-        /*
-           window.onresize = () => {
-               this.setState({width: this.refs.root.offsetWidth});
-           };
-           */
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         this.getData();
     }
 

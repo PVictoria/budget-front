@@ -22,7 +22,10 @@ class OperationsList extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         this.findAllForUser();
     }
 

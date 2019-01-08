@@ -20,7 +20,10 @@ class CreateOperation extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         fetch("http://localhost:8080/article", {
             method: "GET",
             dataType: "JSON",

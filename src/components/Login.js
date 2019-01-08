@@ -5,11 +5,16 @@ class Login extends Component {
         super(props);
 
         this.state = {
-            id: '',
+            id: null,
             items: []
         };
         this.loginHandleClick = this.loginHandleClick.bind(this);
         this.registrationHandleClick = this.registrationHandleClick.bind(this);
+    }
+
+    componentDidMount() {
+        this.setState({id: null});
+        localStorage.setItem('userSecretId', this.state.id);
     }
 
     render() {

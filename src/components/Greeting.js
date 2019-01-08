@@ -10,6 +10,7 @@ class Greeting extends Component {
 
         this.state = {
             id: localStorage.getItem('userSecretId'),
+            // id : null,
             items: []
 
         };
@@ -17,8 +18,7 @@ class Greeting extends Component {
 
 
     componentDidMount() {
-        console.log("greeting " + this.state.id);
-        if (this.state.id === undefined) {
+        if (this.state.id === 'null') {
             this.props.history.push('/login');
             return;
         }

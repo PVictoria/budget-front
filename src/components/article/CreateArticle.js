@@ -2,6 +2,11 @@ import React from "react";
 import Navigation from "../Navigation";
 
 class CreateArticle extends React.Component {
+    componentDidMount() {
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+        }
+    }
 
     render() {
         return (

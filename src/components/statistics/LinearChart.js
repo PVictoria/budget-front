@@ -20,14 +20,16 @@ export default class LinearChart extends Component {
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         fetch("http://localhost:8080/article", {
             method: "GET",
             dataType: "JSON",
         })
             .then((resp) => {
-                const copy = resp.json();
-                return copy;
+                return resp.json();
             })
             .then((data) => {
                 this.setState({articles: data});
@@ -38,24 +40,9 @@ export default class LinearChart extends Component {
     }
 
     render() {
-        const data = [
-            {
-                color: "steelblue",
-                name: "11",
-                points: [{x: '2018-12-12', y: 2}]
-                // points: [{x: '2018-12-12', y: 2}, {x: '2018-12-13', y: 5}, {x: '2018-12-14', y: -3}]
-            },
-            {
-                color: "red",
-                points: [{x: '2018-12-12', y: 3}]
-                // points: [{x: '2018-12-12', y: 3}, {x: '2018-12-13', y: 2}, {x: '2018-12-14', y: -1}]
-            }
-        ];
-        // this.getData();
         this.updateLineValues();
         var dates = [];
         this.state.items.forEach(value => dates.push(value.xdate.toString()));
-        // var minDate =
         dates.sort((a, b) => {
             if (a > b) {
                 return -1;

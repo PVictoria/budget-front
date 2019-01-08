@@ -20,7 +20,10 @@ export default class PieStatChart extends Component {
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         this.getData();
     }
 

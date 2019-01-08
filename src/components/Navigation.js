@@ -8,9 +8,9 @@ class Navigation extends Component {
             <div>
                 <nav className="navigation grid grid-gutters large-grid-fit med-grid-fit small-grid-1of2 menu-style">
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font"
+                        <a className="nav-link menu-item-font" style={{color: '#777777'}}
                            href="http://localhost:3000/login">
-                            <i className="fa fa-book"></i> Login
+                            <i className="fa fa-book"></i> Logout
                         </a>
                     </li>
                     <li className="menu-item nav-item">

@@ -20,7 +20,10 @@ class Balance extends React.Component {
     }
 
     componentDidMount() {
-        console.log("mount");
+        if (this.state.id === 'null') {
+            this.props.history.push('/login');
+            return;
+        }
         this.getBalanceForUser();
     }
 
@@ -87,10 +90,8 @@ class Balance extends React.Component {
 
     createHandleClick = () => {
 
-        // var date = document.getElementById("dateOperation").value;
         var balance = {
             userId: this.state.id,
-            // createDate: date,
         };
         var balanceJson = JSON.stringify(balance);
         console.log(balanceJson);
