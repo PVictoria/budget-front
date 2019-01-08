@@ -127,7 +127,9 @@ class OperationsList extends React.Component {
             .then((data) => {
 
                 if (data.status === 500) {
-                    alert("Параметры фильтра не корректны");
+                    alert("Параметры фильтра не корректны. Статья не найдена. Будут показаны все операции");
+                    this.clearHandleClick();
+                    this.findAllForUser();
                     return;
                 }
                 this.setState({items: data});
@@ -148,7 +150,9 @@ class OperationsList extends React.Component {
             })
             .then((data) => {
                 if (data.status === 500) {
-                    alert("Параметры фильтра не корректны");
+                    alert("Параметры фильтра не корректны. Будут показаны все операции");
+                    this.clearHandleClick();
+                    this.findAllForUser();
                     return;
                 }
                 this.setState({items: data});
@@ -169,7 +173,9 @@ class OperationsList extends React.Component {
             })
             .then((data) => {
                 if (data.status === 500) {
-                    alert("Параметры фильтра не корректны");
+                    alert("Параметры фильтра не корректны. Будут показаны все операции");
+                    this.clearHandleClick();
+                    this.findAllForUser();
                     return;
                 }
                 this.setState({items: data});
