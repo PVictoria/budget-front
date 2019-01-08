@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import BarChart from 'react-bar-chart';
 import Dropdown from "react-dropdown";
 import * as d3 from "d3";
+import Navigation from "../Navigation";
 
 
 const margin = {top: 20, right: 20, bottom: 30, left: 40};
@@ -60,48 +61,50 @@ export default class BoxChart extends Component {
         console.log("new date " + new Date());
         const scale = d3.scaleOrdinal().range(['red', 'blue', 'green']);
         return (
-            <div ref='root'>
-                <Dropdown id={"time"}
-                          name={"time"}
-                          options={['year', 'allTime']}
-                          value={this._selectedTime}
-                          onChange={item => {
-                              this._selectedTime = item.value;
-                              this.getData();
-                          }}
-                          placeholder="Select time"
-                          style={{width: '50px'}}/>
-                <div style={{width: '50%'}}>
-                    <BarChart colorByLabel={false}
-                              colorScale={scale}
-                              ylabel='Quantity'
-                              width={this.state.width}
-                              height={200}
-                              margin={margin}
-                              data={this.state.credit}
-                              onBarClick={this.handleBarClick}
-                    />
-                    <BarChart colorByLabel={false}
-                              colorScale={scale}
-                              ylabel='Debit'
-                              width={this.state.width}
-                              height={200}
-                              margin={margin}
-                              data={this.state.debit}
-                              onBarClick={this.handleBarClick}
-                    />
-                    <BarChart colorByLabel={false}
-                              colorScale={scale}
-                              ylabel='Amount'
-                              width={this.state.width}
-                              height={200}
-                              margin={margin}
-                              data={this.state.amount}
-                              onBarClick={this.handleBarClick}
+            <div className="row">
+                <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
+                <div className="col-sm-15" style={{width: '75%'}}>
 
+                    <Dropdown id={"time"}
+                              name={"time"}
+                              options={['year', 'allTime']}
+                              value={this._selectedTime}
+                              onChange={item => {
+                                  this._selectedTime = item.value;
+                                  this.getData();
+                              }}
+                              placeholder="Select time"
+                              style={{width: '50px'}}/>
+                    <div style={{width: '50%'}}>
+                        <BarChart colorByLabel={false}
+                                  colorScale={scale}
+                                  ylabel='Quantity'
+                                  width={this.state.width}
+                                  height={200}
+                                  margin={margin}
+                                  data={this.state.credit}
+                                  onBarClick={this.handleBarClick}
+                        />
+                        <BarChart colorByLabel={false}
+                                  colorScale={scale}
+                                  ylabel='Debit'
+                                  width={this.state.width}
+                                  height={200}
+                                  margin={margin}
+                                  data={this.state.debit}
+                                  onBarClick={this.handleBarClick}
+                        />
+                        <BarChart colorByLabel={false}
+                                  colorScale={scale}
+                                  ylabel='Amount'
+                                  width={this.state.width}
+                                  height={200}
+                                  margin={margin}
+                                  data={this.state.amount}
+                                  onBarClick={this.handleBarClick}
+                        />
 
-                    />
-
+                    </div>
                 </div>
             </div>
         );

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import LineChart from 'react-linechart';
 import 'react-linechart/dist/styles.css';
 import Dropdown from "react-dropdown";
+import Navigation from "../Navigation";
 
 export default class LinearChart extends Component {
 
@@ -70,40 +71,43 @@ export default class LinearChart extends Component {
         console.log("maxDate  " + maxDate);
         console.log("minDate  " + minDate);
         return (
-            <div>
-                <div className="App">
-                    <h1>My First LineChart</h1>
-                    <Dropdown id={"article"}
-                              name={"article"}
-                              options={this.state.articles.map(value => value.name)}
-                              value={this._selectedArticle}
-                              onChange={item => {
-                                  this._selectedArticle = item.value;
-                                  this.getData();
-                              }}
-                              placeholder="Select an article"
-                              style={{width: '50px'}}/>
-                    <Dropdown id={"time"}
-                              name={"time"}
-                              options={['year', 'month', 'allTime']}
-                              value={this._selectedTime}
-                              onChange={item => {
-                                  this._selectedTime = item.value;
-                                  this.getData();
-                              }}
-                              placeholder="Select time"
-                              style={{width: '50px'}}/>
-                    <LineChart
-                        width={600}
-                        height={400}
-                        data={this.state.data}
-                        isDate={true}
-                        interpolate={'linear'}
-                        showLegends={true}
-                        ticks={5}
-                        xMin={minDate}
-                        xMax={maxDate}
-                    />
+            <div className="row">
+                <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
+                <div className="col-sm-15" style={{width: '75%'}}>
+                    <div className="App">
+                        <h1>My First LineChart</h1>
+                        <Dropdown id={"article"}
+                                  name={"article"}
+                                  options={this.state.articles.map(value => value.name)}
+                                  value={this._selectedArticle}
+                                  onChange={item => {
+                                      this._selectedArticle = item.value;
+                                      this.getData();
+                                  }}
+                                  placeholder="Select an article"
+                                  style={{width: '50px'}}/>
+                        <Dropdown id={"time"}
+                                  name={"time"}
+                                  options={['year', 'month', 'allTime']}
+                                  value={this._selectedTime}
+                                  onChange={item => {
+                                      this._selectedTime = item.value;
+                                      this.getData();
+                                  }}
+                                  placeholder="Select time"
+                                  style={{width: '50px'}}/>
+                        <LineChart
+                            width={600}
+                            height={400}
+                            data={this.state.data}
+                            isDate={true}
+                            interpolate={'linear'}
+                            showLegends={true}
+                            ticks={5}
+                            xMin={minDate}
+                            xMax={maxDate}
+                        />
+                    </div>
                 </div>
             </div>
         );
