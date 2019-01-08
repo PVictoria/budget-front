@@ -116,7 +116,8 @@ class CreateOperation extends React.Component {
     };
 
     cancelHandleClick = () => {
-        document.getElementsByClassName("Dropdown-root").value = "";
+        //todo: replace with xPath expression
+        document.getElementsByClassName("Dropdown-root")[0].children[0].children[0].textContent = "Select an article";
         document.getElementById("sum").value = "";
         document.getElementById("dateOperation").value = "";
     };
