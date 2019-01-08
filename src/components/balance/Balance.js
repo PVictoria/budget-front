@@ -1,19 +1,19 @@
 import React from 'react';
 import ReactTable from "react-table";
 import Navigation from "../Navigation";
-import DatePicker from "react-datepicker/es";
+import MonthPickerInput from "react-month-picker-input";
 
 class Balance extends React.Component {
 
     constructor(props) {
         super(props);
 
-
+        this._selectedMonthYear = null;
         this.state = {
             id: localStorage.getItem('userSecretId'),
             selected: [],
             selectedNames: [],
-            selectedDate: null,
+            // selectedDate: null,
             items: []
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
@@ -65,12 +65,15 @@ class Balance extends React.Component {
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15" style={{width: '75%'}}>
                     <h1>Balance</h1>
-                    <DatePicker id={"dateOperation"}
-                                dateFormat="yyyy-MM-dd"
-                                selected={this.state.selectedDate}
-                                onChange={(date) => this.setState({selectedDate: date})}
-                                placeholderText={"Select month"}
-                                dropdownMode={"select"}/>
+                    <div style={{width: '400px'}}>
+                        <label>Pick A Month</label>
+                        <MonthPickerInput
+                            onChange={(item, i, k) => {
+                                console.log(item + ' ' + i + ' ' + k);
+                                this._selectedMonthYear = (k + 1) + '-' + i;
+                            }}
+                        />
+                    </div>
                     <button onClick={this.createHandleClick}>Create</button>
                     <button onClick={this.deleteHandleClick}>Delete</button>
                     <ReactTable data={this.state.items}
@@ -84,15 +87,15 @@ class Balance extends React.Component {
 
     createHandleClick = () => {
 
-        var date = document.getElementById("dateOperation").value;
+        // var date = document.getElementById("dateOperation").value;
         var balance = {
             userId: this.state.id,
-            createDate: date,
+            // createDate: date,
         };
         var balanceJson = JSON.stringify(balance);
         console.log(balanceJson);
 
-        fetch("http://localhost:8080/balance", {
+        fetch("http://localhost:8080/balance/" + this._selectedMonthYear, {
             method: "POST",
             dataType: "JSON",
             headers: {
@@ -102,9 +105,9 @@ class Balance extends React.Component {
         }).then(res => {
             if (res.ok) {
                 this.getBalanceForUser();
-                //this.props.history.push("/operations")
             } else {
-                alert("Не удалось сохранить операцию");
+                alert("Не удалось сохранить операцию. Нельзя создавать 2 баланса за один период," +
+                    " так же нельзя создать баланс за период предшевствующий последнему существующему балансу.");
             }
         });
     };

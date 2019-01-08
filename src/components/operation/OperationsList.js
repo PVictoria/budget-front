@@ -2,13 +2,15 @@ import React from 'react';
 import ReactTable from "react-table";
 import Navigation from "../Navigation";
 import 'react-month-picker/css/month-picker.css'
-import DatePicker from "react-datepicker/es";
+import MonthPickerInput from "react-month-picker-input";
 
 
 class OperationsList extends React.Component {
 
     constructor(props) {
         super(props);
+        this._selectedMonthYear = null;
+        console.log(this._selectedMonthYear);
         this.state = {
             id: localStorage.getItem('userSecretId'),
             selected: [],
@@ -66,12 +68,15 @@ class OperationsList extends React.Component {
                            name="article"
                            required="true"
                            placeholder="New article"/>
-                    <DatePicker id={"dateOperation"}
-                                dateFormat="yyyy-MM-dd"
-                                selected={this.state.selectedDate}
-                                onChange={(date) => this.setState({selectedDate: date})}
-                                placeholderText={"Select month"}
-                                dropdownMode={"select"}/>
+                    <div style={{width: '400px'}}>
+                        <label>Pick A Month</label>
+                        <MonthPickerInput
+                            onChange={(item, i, k) => {
+                                console.log(item + ' ' + i + ' ' + k);
+                                this._selectedMonthYear = (k + 1) + '-' + i;
+                            }}
+                        />
+                    </div>
 
                     <button onClick={this.findHandleClick}>Find</button>
                     <button onClick={this.clearHandleClick}>Clear</button>
@@ -87,12 +92,12 @@ class OperationsList extends React.Component {
 
     findHandleClick = () => {
         console.log("find " + this._article.value.length);
-        console.log("find " + this.state.selectedDate);
-        if (this._article.value.length > 0 && this.state.selectedDate === null) {
+        console.log("find " + this._selectedMonthYear);
+        if (this._article.value.length > 0 && this._selectedMonthYear === null) {
             this.findByArticle();
-        } else if (this._article.value.length === 0 && this.state.selectedDate !== null) {
+        } else if (this._article.value.length === 0 && this._selectedMonthYear !== null) {
             this.findByDate()
-        } else if (this._article.value.length > 0 && this.state.selectedDate !== null) {
+        } else if (this._article.value.length > 0 && this._selectedMonthYear !== null) {
             this.findByArticleAndDate()
         } else {
             this.findAllForUser();
@@ -140,8 +145,8 @@ class OperationsList extends React.Component {
     }
 
     findByDate() {
-        var date = document.getElementById("dateOperation").value;
-        fetch("http://localhost:8080/operation/" + this.state.id + '/date/' + date, {
+        // var date = document.getElementById("dateOperation").value;
+        fetch("http://localhost:8080/operation/" + this.state.id + '/monthYear/' + this._selectedMonthYear, {
             method: "GET",
             dataType: "JSON",
         })
@@ -163,8 +168,8 @@ class OperationsList extends React.Component {
     }
 
     findByArticleAndDate() {
-        var date = document.getElementById("dateOperation").value;
-        fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value + '/date/' + date, {
+        // var date = document.getElementById("dateOperation").value;
+        fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value + '/monthYear/' + this._selectedMonthYear, {
             method: "GET",
             dataType: "JSON",
         })

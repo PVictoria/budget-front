@@ -8,9 +8,9 @@ import Navigation from "../Navigation";
 const margin = {top: 20, right: 20, bottom: 30, left: 40};
 
 export default class BoxChart extends Component {
-
     constructor(props) {
         super(props);
+        // this.
         this._selectedTime = 'year';
 
         this.state = {
@@ -20,6 +20,7 @@ export default class BoxChart extends Component {
             credit: [],
             debit: [],
             amount: [],
+            // timeRanges : [{value: 'year', label: 'year'}, {label: 'за все время', value: 'allTime'}],
         };
     }
 
@@ -60,6 +61,7 @@ export default class BoxChart extends Component {
         this.updateBarValues();
         console.log("new date " + new Date());
         const scale = d3.scaleOrdinal().range(['red', 'blue', 'green']);
+        const timeRanges = [{value: 'year', label: 'За год'}, {value: 'allTime', label: 'За все время'}];
         return (
             <div className="row">
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
@@ -67,18 +69,18 @@ export default class BoxChart extends Component {
 
                     <Dropdown id={"time"}
                               name={"time"}
-                              options={['year', 'allTime']}
+                              options={timeRanges}
                               value={this._selectedTime}
                               onChange={item => {
                                   this._selectedTime = item.value;
                                   this.getData();
                               }}
-                              placeholder="Select time"
+                              placeholder="Выберите период"
                               style={{width: '50px'}}/>
                     <div style={{width: '50%'}}>
                         <BarChart colorByLabel={false}
                                   colorScale={scale}
-                                  ylabel='Quantity'
+                                  ylabel='Credit'
                                   width={this.state.width}
                                   height={200}
                                   margin={margin}
