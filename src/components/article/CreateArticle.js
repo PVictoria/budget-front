@@ -2,6 +2,13 @@ import React from "react";
 import Navigation from "../Navigation";
 
 class CreateArticle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: localStorage.getItem('userSecretId'),
+        };
+    }
+
     componentDidMount() {
         if (this.state.id === 'null') {
             this.props.history.push('/login');
@@ -10,10 +17,10 @@ class CreateArticle extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Create Article</h1>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <h1 className="page-header">Create Article</h1>
                     <input ref={input => (this._article = input)}
                            id="article"
                            name="article"
@@ -30,6 +37,10 @@ class CreateArticle extends React.Component {
     createHandleClick = () => {
         if (this._article.value.length === 0) {
             alert("Название не может быть пустым");
+            return;
+        }
+        if (!this._article.value.match("^[a-zA-Z0-9_.-]*$")) {
+            alert("Название статьи может сожержать только буквы, цифры и символы '_'  '.'  '-'  ");
             return;
         }
         fetch("http://localhost:8080/article", {

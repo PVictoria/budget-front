@@ -2,16 +2,16 @@ import React from 'react';
 import ReactTable from "react-table";
 import Navigation from "../Navigation";
 
-class MyTable extends React.Component {
+class Article extends React.Component {
 
     constructor(props) {
         super(props);
 
-
         this.state = {
             selected: [],
             selectedNames: [],
-            items: []
+            items: [],
+            rowNum: 0
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
     }
@@ -30,51 +30,50 @@ class MyTable extends React.Component {
             })
             .then((data) => {
                 this.setState({items: data});
+                this.setState({rowNum: this.state.items.length});
             })
             .catch((error) => {
                 console.log(error, "catch the hoop")
             });
-
     }
 
     render() {
         console.log("renderTable");
+        console.log(this.state.items.length);
 
-        const columns = [{
-            Header: 'Code',
-            accessor: 'id' // String-based value accessors!
-        }, {
-            Header: 'Name',
-            accessor: 'name',
-            // Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
-        },
+        const columns = [
+            {
+                Header: 'Name',
+                accessor: 'name',
+            },
             {
                 Header: 'Selection',
                 accessor: '',
+                width: 100,
                 Cell: ({original}) => {
                     return (<input
+                        style={{width: '15px', height: '15px'}}
                         type="checkbox"
-                        className="checkbox"
-                        // checked={this.state.selected[this.state.items.id]= true}
-                        // onChange={() => this.toggleRow(this.state.items.id)}
+                        className="checkbox item-font-color"
                         onChange={() => this.onCheckboxChange(original.name)}
                     />);
                 }
-                // <span className='number'>{props.value}</span> // Custom cell components!
             }
         ];
-
-
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Articles</h1>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <h1 className="page-header">Articles</h1>
                     <button onClick={this.deleteHandleClick}>Delete</button>
-                    <ReactTable data={this.state.items}
+                    <ReactTable className="item-font-color"
+                                data={this.state.items}
                                 columns={columns}
+                                defaultSorted={[{id: "name", desc: false}]}
+                                showPagination={false}
+                                loadingText=""
+                                defaultPageSize={10}
                     />
-
                 </div>
             </div>
         );
@@ -93,23 +92,16 @@ class MyTable extends React.Component {
         console.log("-------------");
         this.state.selectedNames.forEach(value => console.log('list ' + value));
         console.log("......................");
-
-        // console.log(this.state.selectedNames.);
     };
 
     deleteHandleClick = () => {
-
         console.log("DELETEON-------------");
         this.state.selectedNames.forEach(value => {
             console.log('list ' + value)
             this.deleteArticle(value);
         });
         console.log("DELETEON......................");
-
-        // console.log(this.state.selectedNames[1]);
         console.log(this.selectedNames);
-        // window.location.reload();
-
     };
 
 
@@ -133,4 +125,4 @@ class MyTable extends React.Component {
 }
 
 
-export default MyTable;
+export default Article;

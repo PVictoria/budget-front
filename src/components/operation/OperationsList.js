@@ -33,9 +33,6 @@ class OperationsList extends React.Component {
         console.log("renderTable");
 
         const columns = [{
-            Header: 'Code',
-            accessor: 'id' // String-based value accessors!
-        }, {
             Header: 'Article',
             accessor: 'articleName',
         }, {
@@ -52,6 +49,7 @@ class OperationsList extends React.Component {
             accessor: '',
             Cell: ({original}) => {
                 return (<input
+                    style={{width: '15px', height: '15px'}}
                     type="checkbox"
                     className="checkbox"
                     onChange={() => this.onCheckboxChange(original.id)}
@@ -61,11 +59,11 @@ class OperationsList extends React.Component {
         ];
 
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
 
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Operations List</h1>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <h1 className="page-header">Operations List</h1>
                     <input ref={input => (this._article = input)}
                            id="article"
                            name="article"
@@ -84,8 +82,12 @@ class OperationsList extends React.Component {
                     <button onClick={this.findHandleClick}>Find</button>
                     <button onClick={this.clearHandleClick}>Clear</button>
                     <button onClick={this.deleteHandleClick}>Delete</button>
-                    <ReactTable data={this.state.items}
+                    <ReactTable className="item-font-color"
+                                data={this.state.items}
                                 columns={columns}
+                                showPagination={false}
+                                loadingText=""
+                                defaultPageSize={10}
                     />
 
                 </div>

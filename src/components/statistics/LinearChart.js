@@ -58,9 +58,9 @@ export default class LinearChart extends Component {
         console.log("maxDate  " + maxDate);
         console.log("minDate  " + minDate);
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
                     <div className="App">
                         <h1>My First LineChart</h1>
                         <Dropdown id={"article"}

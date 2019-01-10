@@ -49,12 +49,13 @@ class CreateOperation extends React.Component {
         }
 
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Create Operation</h1>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <h1 className="page-header">Create Operation</h1>
                     <Dropdown id={"article"}
                               name={"article"}
+                              value={this._selectedArticle}
                               options={this.state.items.map(value => value.name)}
                               onChange={item => this._selectedArticle = item.value}
                               placeholder="Select an article"
@@ -120,6 +121,7 @@ class CreateOperation extends React.Component {
 
     cancelHandleClick = () => {
         //todo: replace with xPath expression
+        console.log("clear");
         document.getElementsByClassName("Dropdown-root")[0].children[0].children[0].textContent = "Select an article";
         document.getElementById("sum").value = "";
         document.getElementById("dateOperation").value = "";

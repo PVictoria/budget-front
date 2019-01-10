@@ -13,7 +13,6 @@ class Balance extends React.Component {
             id: localStorage.getItem('userSecretId'),
             selected: [],
             selectedNames: [],
-            // selectedDate: null,
             items: []
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
@@ -64,10 +63,10 @@ class Balance extends React.Component {
 
 
         return (
-            <div className="row">
-                <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
-                    <h1>Balance</h1>
+            <div className="row" style={{height: '100%'}}>
+                <div className="col-sm-3  menu-style" style={{width: '100%', height: '100%'}}><Navigation/></div>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <h1 className="page-header">Balance</h1>
                     <div style={{width: '400px'}}>
                         <label>Pick A Month</label>
                         <MonthPickerInput
@@ -79,8 +78,12 @@ class Balance extends React.Component {
                     </div>
                     <button onClick={this.createHandleClick}>Create</button>
                     <button onClick={this.deleteHandleClick}>Delete</button>
-                    <ReactTable data={this.state.items}
+                    <ReactTable className="item-font-color"
+                                data={this.state.items}
                                 columns={columns}
+                                showPagination={false}
+                                loadingText=""
+                                defaultPageSize={10}
                     />
                 </div>
             </div>

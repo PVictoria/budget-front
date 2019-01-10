@@ -1,7 +1,29 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+}
+
 .menu-style {
+    /*height: ;*/
     list-style: none;
     padding-bottom: 0px;
-    background-color: darkblue;
+    /*padding-right: 15px;*/
+    background-color: #324051;
+    border-right-style: solid;
+    border-right-color: #777777;
+    /*color: #1f2833;*/
+    /*color: #c5c6c7;*/
+    /*color: #66fcf1;*/
+    /*color: #45a29e;*/
 }
 
 .menu-item {
@@ -9,15 +31,64 @@
     padding-bottom: 0px;
 }
 
-.menu-item-font {
-    color: aquamarine;
+.col_mp:hover {
+    /*background-color: #45a29e;*/
+    color: #324051 !important;
+    background-color: #45a29e !important;;
+}
+
+.col_mp > * {
+    background-color: #45a29e;
+    color: red !important;
+}
+
+.col_mp {
+    color: #324051;
+}
+
+.calendar-container {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.menu-item-font-color {
+    color: #66fcf1;
+}
+
+.logout-button-color {
+    color: #777777;
+}
+
+.item-font-color {
+    color: #66fcf1;
+}
+
+.page-header {
+    background-position-x: center;
+    font-size: 26px;
+    color: #66fcf1;
+}
+
+.all-elements-padding {
+    padding-left: 20px;
 }
 
 a:hover {
-    color: skyblue;
+    color: #45a29e;
+
 }
 
+/*not work*/
+.ReactTable .rt-table {
+    /*width: 95%;*/
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 5px red;
+}
 .ReactTable .rt-thead {
+    width: 95%;
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
@@ -32,9 +103,11 @@ a:hover {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    color: #45a29e;
 }
 
 .ReactTable .rt-tr-group {
+    width: 95%;
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
@@ -47,7 +120,7 @@ a:hover {
     flex-direction: column;
     -webkit-box-align: stretch;
     -ms-flex-align: stretch;
-    align-items: stretch
+    align-items: stretch;
 }
 
 .ReactTable .rt-tr {
@@ -56,7 +129,7 @@ a:hover {
     flex: 1 0 auto;
     /*display: -webkit-inline-box;*/
     display: -ms-inline-flexbox;
-    display: inline-flex
+    display: inline-flex;
 }
 
 .ReactTable .rt-th,
@@ -72,6 +145,9 @@ a:hover {
     transition: .3s ease;
     -webkit-transition-property: width, min-width, padding, opacity;
     transition-property: width, min-width, padding, opacity;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #777777;
 }
 
 .Dropdown-root {

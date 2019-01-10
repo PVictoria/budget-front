@@ -4,7 +4,7 @@ import {Route, Switch} from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.css"
 import Navigation from "./Navigation";
 import Greeting from "./Greeting";
-import MyTable from "./article/MyTable";
+import Article from "./article/Article";
 import CreateArticle from "./article/CreateArticle";
 import CreateOperation from "./operation/CreateOperation";
 import OperationsList from "./operation/OperationsList";
@@ -18,7 +18,7 @@ const App = () => (
         <Route exact path='/login' component={Login}/>
         <Route path='/navigation' component={Navigation}/>
         <Route path='/greeting' component={Greeting}/>
-        <Route path='/articles' component={MyTable}/>
+        <Route path='/articles' component={Article}/>
         <Route path='/create-article' component={CreateArticle}/>
         <Route path='/create-operation' component={CreateOperation}/>
         <Route path='/operations' component={OperationsList}/>

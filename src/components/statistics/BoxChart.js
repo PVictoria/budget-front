@@ -61,9 +61,9 @@ export default class BoxChart extends Component {
         const scale = d3.scaleOrdinal().range(['red', 'blue', 'green']);
         const timeRanges = [{value: 'year', label: 'За год'}, {value: 'allTime', label: 'За все время'}];
         return (
-            <div className="row">
+            <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15" style={{width: '75%'}}>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
 
                     <Dropdown id={"time"}
                               name={"time"}

@@ -6,52 +6,53 @@ class Navigation extends Component {
     render() {
         return (
             <div>
-                <nav className="navigation grid grid-gutters large-grid-fit med-grid-fit small-grid-1of2 menu-style">
+                <nav
+                    className="navigation grid grid-gutters large-grid-fit med-grid-fit small-grid-1of2">
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" style={{color: '#777777'}}
+                        <a className="nav-link logout-button-color"
                            href="http://localhost:3000/login">
-                            <i className="fa fa-book"></i> Logout
+                            Logout
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/operations'>
-                            <i className="fa fa-book"/>Operation list
+                        <a className="nav-link menu-item-font-color" href='/operations'>
+                            Operation list
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/create-operation'>
-                            <i className="fa fa-book"/>Create operation
+                        <a className="nav-link menu-item-font-color" href='/create-operation'>
+                            Create operation
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/balance'>
-                            <i className="fa fa-book"/>Balance
+                        <a className="nav-link menu-item-font-color" href='/balance'>
+                            Balance
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/articles'>
-                            <i className="fa fa-book"/>Articles
+                        <a className="nav-link menu-item-font-color" href='/articles'>
+                            Articles
                         </a>
                     </li>
 
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/create-article'>
-                            <i className="fa fa-book"/>Create article
+                        <a className="nav-link menu-item-font-color" href='/create-article'>
+                            Create article
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/box-chart'>
-                            <i className="fa fa-book"/>Bar graph
+                        <a className="nav-link menu-item-font-color" href='/box-chart'>
+                            Bar graph
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/line-chart'>
-                            <i className="fa fa-book"/>Linear graph
+                        <a className="nav-link menu-item-font-color" href='/line-chart'>
+                            Linear graph
                         </a>
                     </li>
                     <li className="menu-item nav-item">
-                        <a className="nav-link menu-item-font" href='/pie-chart'>
-                            <i className="fa fa-book"/>Pie chart
+                        <a className="nav-link menu-item-font-color" href='/pie-chart'>
+                            Pie chart
                         </a>
                     </li>
                 </nav>
