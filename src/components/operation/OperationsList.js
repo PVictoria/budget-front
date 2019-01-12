@@ -60,10 +60,12 @@ class OperationsList extends React.Component {
             }
         }
         ];
-
+        // console.log("rendered "+ this.state.year + this.state.month);
+        // if(document.getElementsByTagName("input")[1]) {
+        //     document.getElementsByTagName("input")[1].value = null;
+        // }
         return (
             <div className="row" style={{height: '100%'}}>
-
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
                     <h1 className="page-header">Operations List</h1>
@@ -87,7 +89,7 @@ class OperationsList extends React.Component {
                             className="calendar-container-s button-position input"
                             month={this.state.month}
                             year={this.state.year}
-                            value={""}
+                            // value={""}
                             style={{width: '200px'}}
                             onChange={(item, i, k) => {
                                 console.log(item + ' ' + i + ' ' + k);
@@ -238,10 +240,8 @@ class OperationsList extends React.Component {
 
     clearHandleClick = () => {
         console.log("clear");
-        document.getElementById("article").value = "";
-        document.getElementsByTagName("input")[1].value = null;
-        this._selectedMonthYear = null;
         this.setState({year: undefined, month: undefined});
+        window.location.reload();
     };
 
 

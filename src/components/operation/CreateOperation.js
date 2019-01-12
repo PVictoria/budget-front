@@ -79,11 +79,7 @@ class CreateOperation extends React.Component {
                         <button className="button-color" style={{'margin': '10px'}}
                                 onClick={this.cancelHandleClick}>Cancel
                         </button>
-
-
                     </div>
-
-
                 </div>
             </div>
         );
@@ -92,7 +88,8 @@ class CreateOperation extends React.Component {
     createHandleClick = () => {
         console.log("mm " + this._selectedArticle);
         var date = document.getElementById("dateOperation").value;
-        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || date === undefined) {
+        console.log(document.getElementById("dateOperation").value);
+        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || date === undefined || date === "") {
             alert("Не все поля заполнены");
             return;
         }
@@ -136,6 +133,7 @@ class CreateOperation extends React.Component {
         document.getElementsByClassName("Dropdown-root")[0].children[0].children[0].textContent = "Select an article";
         document.getElementById("sum").value = "";
         document.getElementById("dateOperation").value = "";
+        this.setState({selectedDate: null});
     };
 }
 
