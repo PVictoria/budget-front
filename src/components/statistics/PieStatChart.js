@@ -9,7 +9,8 @@ import Navigation from "../Navigation";
 export default class PieStatChart extends Component {
     constructor(props) {
         super(props);
-        this._selectedMonthYear = '12-2018';
+
+        this._selectedMonthYear = (new Date().getMonth() + 1) + '-' + new Date().getFullYear();
         this.color = [];
         this.state = {
             id: localStorage.getItem('userSecretId'),
@@ -106,7 +107,8 @@ export default class PieStatChart extends Component {
                             <Legend data={this.state.data}
                                     dataId={'title'}
                                     config={this.color}
-                                    horizontal={true}/>
+                                    horizontal={true}
+                            />
                         </div>
                     </div>
                 </div>

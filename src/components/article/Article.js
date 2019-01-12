@@ -72,7 +72,7 @@ class Article extends React.Component {
                                 data={this.state.items}
                                 columns={columns}
                                 defaultSorted={[{id: "name", desc: false}]}
-                                showPagination={false}
+                                showPagination={true}
                                 loadingText=""
                                 defaultPageSize={10}
                     />

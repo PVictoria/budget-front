@@ -84,7 +84,7 @@ class Balance extends React.Component {
                     <ReactTable className="item-font-color"
                                 data={this.state.items}
                                 columns={columns}
-                                showPagination={false}
+                                showPagination={true}
                                 loadingText=""
                                 defaultPageSize={10}
                     />

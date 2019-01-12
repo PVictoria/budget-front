@@ -17,8 +17,7 @@ class OperationsList extends React.Component {
             selectedNames: [],
             month: null,
             year: null,
-
-            // selectedDate: null,
+            rowsNum: 0,
             items: []
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
@@ -60,10 +59,6 @@ class OperationsList extends React.Component {
             }
         }
         ];
-        // console.log("rendered "+ this.state.year + this.state.month);
-        // if(document.getElementsByTagName("input")[1]) {
-        //     document.getElementsByTagName("input")[1].value = null;
-        // }
         return (
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
@@ -103,7 +98,7 @@ class OperationsList extends React.Component {
                         className="item-font-color"
                         data={this.state.items}
                         columns={columns}
-                        showPagination={false}
+                        showPagination={true}
                         loadingText=""
                         defaultPageSize={10}
                     />
@@ -138,7 +133,11 @@ class OperationsList extends React.Component {
                 return resp.json();
             })
             .then((data) => {
-                this.setState({items: data});
+                this.setState({items: data, rowsNum: data.length});
+                console.log('tn ' + this.state.rowsNum);
+                if (this.state.rowsNum > 0) {
+                    this.render();
+                }
             })
             .catch((error) => {
                 console.log(error, "catch the hoop")

@@ -89,7 +89,7 @@ class CreateOperation extends React.Component {
         console.log("mm " + this._selectedArticle);
         var date = document.getElementById("dateOperation").value;
         console.log(document.getElementById("dateOperation").value);
-        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || date === undefined || date === "") {
+        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || !date) {
             alert("Не все поля заполнены");
             return;
         }

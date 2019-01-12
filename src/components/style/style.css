@@ -207,3 +207,18 @@ a:hover {
 .Dropdown-root {
     width: 300px;
 }
+
+select,
+optgroup {
+    visibility: hidden;
+    height: 0px;
+}
+
+button {
+    border: solid #45a29e;
+    background-color: #45a29e;
+    border-radius: 2px;
+    color: #1f2833;
+    margin-top: 10px;
+    display: inline-block;
+}
