@@ -64,8 +64,10 @@ class Article extends React.Component {
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                    <button className="deletion-button" style={{margin: '10px'}}
+                            onClick={this.deleteHandleClick}>Delete
+                    </button>
                     <h1 className="page-header">Articles</h1>
-                    <button onClick={this.deleteHandleClick}>Delete</button>
                     <ReactTable className="item-font-color"
                                 data={this.state.items}
                                 columns={columns}

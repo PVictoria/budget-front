@@ -32,7 +32,6 @@ body, html {
 }
 
 .col_mp:hover {
-    /*background-color: #45a29e;*/
     color: #324051 !important;
     background-color: #45a29e !important;;
 }
@@ -87,6 +86,45 @@ a:hover {
 
 .selected_date_mp {
     color: #324051 !important;
+}
+
+.button-color {
+    border: solid #45a29e;
+    background-color: #45a29e;
+    border-radius: 2px;
+}
+
+.button-position {
+    display: flex;
+    position: absolute;
+    border: solid #45a29e;
+    background-color: #45a29e;
+    border-radius: 2px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.deletion-button {
+    background-color: #8886a2;
+    border: #8886a2 2px solid;
+    display: flex;
+    position: absolute;
+    right: 5%;
+    border-radius: 2px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.axis path,
+.axis line,
+.bar,
+.axis text {
+    fill: #ddd;
+}
+
+.legend {
+    fill: #ddd !important;
+    color: #ddd;
 }
 
 .selected_cell {

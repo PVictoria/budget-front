@@ -63,7 +63,7 @@ export default class BoxChart extends Component {
         return (
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
-                <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
+                <div className="col-sm-15 all-elements-padding" style={{width: '75%', 'margin-top': '20px'}}>
 
                     <Dropdown id={"time"}
                               name={"time"}
@@ -75,24 +75,27 @@ export default class BoxChart extends Component {
                               }}
                               placeholder="Выберите период"
                               style={{width: '50px'}}/>
+
                     <div style={{width: '50%'}}>
-                        <BarChart colorByLabel={false}
-                                  colorScale={scale}
-                                  ylabel='Credit'
-                                  width={this.state.width}
-                                  height={200}
-                                  margin={margin}
-                                  data={this.state.credit}
-                                  onBarClick={this.handleBarClick}
+                        <BarChart
+                            colorByLabel={false}
+                            colorScale={scale}
+                            ylabel='Credit'
+                            width={this.state.width}
+                            height={200}
+                            margin={margin}
+                            data={this.state.credit}
+                            onBarClick={this.handleBarClick}
                         />
-                        <BarChart colorByLabel={false}
-                                  colorScale={scale}
-                                  ylabel='Debit'
-                                  width={this.state.width}
-                                  height={200}
-                                  margin={margin}
-                                  data={this.state.debit}
-                                  onBarClick={this.handleBarClick}
+                        <BarChart
+                            colorByLabel={false}
+                            colorScale={scale}
+                            ylabel='Debit'
+                            width={this.state.width}
+                            height={200}
+                            margin={margin}
+                            data={this.state.debit}
+                            onBarClick={this.handleBarClick}
                         />
                         <BarChart colorByLabel={false}
                                   colorScale={scale}
@@ -103,7 +106,6 @@ export default class BoxChart extends Component {
                                   data={this.state.amount}
                                   onBarClick={this.handleBarClick}
                         />
-
                     </div>
                 </div>
             </div>

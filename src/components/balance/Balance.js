@@ -67,17 +67,20 @@ class Balance extends React.Component {
                 <div className="col-sm-3  menu-style" style={{width: '100%', height: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
                     <h1 className="page-header">Balance</h1>
-                    <div style={{width: '400px'}}>
-                        <label>Pick A Month</label>
-                        <MonthPickerInput
-                            onChange={(item, i, k) => {
-                                console.log(item + ' ' + i + ' ' + k);
-                                this._selectedMonthYear = (k + 1) + '-' + i;
-                            }}
+                    <div style={{width: '200px'}}>
+                        <label className="item-font-color">Pick A Month</label>
+                        <button className="button-position" style={{right: '20%'}}
+                                onClick={this.createHandleClick}>Create
+                        </button>
+                        <button className="deletion-button" onClick={this.deleteHandleClick}>Delete</button>
+                        <MonthPickerInput className="calendar-container-s button-position input"
+                                          style={{width: '400px'}}
+                                          onChange={(item, i, k) => {
+                                              console.log(item + ' ' + i + ' ' + k);
+                                              this._selectedMonthYear = (k + 1) + '-' + i;
+                                          }}
                         />
                     </div>
-                    <button onClick={this.createHandleClick}>Create</button>
-                    <button onClick={this.deleteHandleClick}>Delete</button>
                     <ReactTable className="item-font-color"
                                 data={this.state.items}
                                 columns={columns}

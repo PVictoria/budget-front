@@ -15,7 +15,10 @@ class OperationsList extends React.Component {
             id: localStorage.getItem('userSecretId'),
             selected: [],
             selectedNames: [],
-            selectedDate: null,
+            month: null,
+            year: null,
+
+            // selectedDate: null,
             items: []
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
@@ -69,25 +72,38 @@ class OperationsList extends React.Component {
                            name="article"
                            required="true"
                            placeholder="New article"/>
-                    <div style={{width: '400px'}}>
-                        <label>Pick A Month</label>
+
+                    <div style={{width: '200px'}}>
+                        <label className="item-font-color">Pick A Month</label>
+                        <button className="button-position" style={{right: '250px'}}
+                                onClick={this.findHandleClick}>Find
+                        </button>
+                        <button className="button-position" style={{right: '150px'}}
+                                onClick={this.clearHandleClick}>Clear
+                        </button>
+                        <button className="deletion-button" onClick={this.deleteHandleClick}>Delete</button>
                         <MonthPickerInput
+                            id="dateOperation"
+                            className="calendar-container-s button-position input"
+                            month={this.state.month}
+                            year={this.state.year}
+                            value={""}
+                            style={{width: '200px'}}
                             onChange={(item, i, k) => {
                                 console.log(item + ' ' + i + ' ' + k);
                                 this._selectedMonthYear = (k + 1) + '-' + i;
+                                this.setState({year: i, month: k});
                             }}
                         />
                     </div>
-
-                    <button onClick={this.findHandleClick}>Find</button>
-                    <button onClick={this.clearHandleClick}>Clear</button>
-                    <button onClick={this.deleteHandleClick}>Delete</button>
-                    <ReactTable className="item-font-color"
-                                data={this.state.items}
-                                columns={columns}
-                                showPagination={false}
-                                loadingText=""
-                                defaultPageSize={10}
+                    <ReactTable
+                        style={{margine: '20px'}}
+                        className="item-font-color"
+                        data={this.state.items}
+                        columns={columns}
+                        showPagination={false}
+                        loadingText=""
+                        defaultPageSize={10}
                     />
 
                 </div>
@@ -98,6 +114,7 @@ class OperationsList extends React.Component {
     findHandleClick = () => {
         console.log("find " + this._article.value.length);
         console.log("find " + this._selectedMonthYear);
+        console.log("find " + this.state.year);
         if (this._article.value.length > 0 && this._selectedMonthYear === null) {
             this.findByArticle();
         } else if (this._article.value.length === 0 && this._selectedMonthYear !== null) {
@@ -150,7 +167,6 @@ class OperationsList extends React.Component {
     }
 
     findByDate() {
-        // var date = document.getElementById("dateOperation").value;
         fetch("http://localhost:8080/operation/" + this.state.id + '/monthYear/' + this._selectedMonthYear, {
             method: "GET",
             dataType: "JSON",
@@ -173,7 +189,6 @@ class OperationsList extends React.Component {
     }
 
     findByArticleAndDate() {
-        // var date = document.getElementById("dateOperation").value;
         fetch("http://localhost:8080/operation/" + this.state.id + '/article/' + this._article.value + '/monthYear/' + this._selectedMonthYear, {
             method: "GET",
             dataType: "JSON",
@@ -208,12 +223,9 @@ class OperationsList extends React.Component {
         console.log("-------------");
         this.state.selectedNames.forEach(value => console.log('list ' + value));
         console.log("......................");
-
-        // console.log(this.state.selectedNames.);
     };
 
     deleteHandleClick = () => {
-
         console.log("DELETEON-------------");
         this.state.selectedNames.forEach(value => {
             console.log('list ' + value);
@@ -222,13 +234,14 @@ class OperationsList extends React.Component {
         console.log("DELETEON......................");
         console.log(this.selectedNames);
         window.location.reload();
-
     };
 
     clearHandleClick = () => {
+        console.log("clear");
         document.getElementById("article").value = "";
-        document.getElementById("dateOperation").value = "";
-        this.setState({selectedDate: null});
+        document.getElementsByTagName("input")[1].value = null;
+        this._selectedMonthYear = null;
+        this.setState({year: undefined, month: undefined});
     };
 
 

@@ -54,23 +54,34 @@ class CreateOperation extends React.Component {
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
                     <h1 className="page-header">Create Operation</h1>
                     <Dropdown id={"article"}
+                              style={{'margin': '10px', 'width': '50px', 'padding': '0px'}}
                               name={"article"}
                               value={this._selectedArticle}
                               options={this.state.items.map(value => value.name)}
                               onChange={item => this._selectedArticle = item.value}
                               placeholder="Select an article"
-                              style={{width: '50px'}}/>
-                    <input id={"sum"}
-                           ref={input => (this._sum = input)}
-                           placeholder="Credit/debit"/>
-                    <DatePicker id={"dateOperation"}
-                                dateFormat="yyyy-MM-dd"
-                                selected={this.state.selectedDate}
-                                onChange={(date) => this.setState({selectedDate: date})}
-                                placeholderText={"Select date"}
-                                dropdownMode={"select"}/>
-                    <button onClick={this.createHandleClick}>Create</button>
-                    <button onClick={this.cancelHandleClick}>Cancel</button>
+                    />
+                    <div>
+                        <input id={"sum"}
+                               style={{'margin-right': '20px'}}
+                               ref={input => (this._sum = input)}
+                               placeholder="Credit/debit"/>
+                        <DatePicker style={{'margin': '10px'}}
+                                    id={"dateOperation"}
+                                    dateFormat="yyyy-MM-dd"
+                                    selected={this.state.selectedDate}
+                                    onChange={(date) => this.setState({selectedDate: date})}
+                                    placeholderText={"Select date"}
+                                    dropdownMode={"select"}/>
+                        <button className="button-color" style={{'margin': '10px', 'margin-left': '20px'}}
+                                onClick={this.createHandleClick}>Create
+                        </button>
+                        <button className="button-color" style={{'margin': '10px'}}
+                                onClick={this.cancelHandleClick}>Cancel
+                        </button>
+
+
+                    </div>
 
 
                 </div>

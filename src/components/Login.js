@@ -20,21 +20,36 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <dev className="input-group container align-middle">
-                    <input ref={input => (this._username = input)}
+                <div
+
+                    className="input-group container align-middle">
+                    <input
+                        style={{'margin-top': '20px', 'left': '92px'}}
+                        ref={input => (this._username = input)}
                            name="username"
                            required="true"
                            placeholder="Username"/>
-                    <input ref={input => (this._password = input)}
+                </div>
+                <div
+                    className="input-group container align-middle">
+                    <input
+                        style={{'margin-top': '10px', 'left': '92px'}}
+                        ref={input => (this._password = input)}
                            name="password"
                            type="password"
                            required="true"
                            placeholder="Password"/>
-                </dev>
-                <dev className="btn-group container align-middle">
-                    <button onClick={this.loginHandleClick}>LOGIN</button>
-                    <button onClick={this.registrationHandleClick}>CREATE</button>
-                </dev>
+                </div>
+                <div>
+                    <button style={{'margin-top': '10px', 'left': '92px'}} className="button-color button-position"
+                            onClick={this.loginHandleClick}>LOGIN
+                    </button>
+                </div>
+                <div className="align-middle">
+                    <button style={{'margin-top': '10px', 'left': '205px'}} className="button-color button-position"
+                            onClick={this.registrationHandleClick}>CREATE
+                    </button>
+                </div>
             </div>
         )
     }

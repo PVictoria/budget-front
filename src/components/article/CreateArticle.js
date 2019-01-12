@@ -26,8 +26,12 @@ class CreateArticle extends React.Component {
                            name="article"
                            required="true"
                            placeholder="New article"/>
-                    <button onClick={this.createHandleClick}>Create</button>
-                    <button onClick={this.cancelHandleClick}>Cancel</button>
+                    <button className="button-color" style={{'margin': '10px', 'margin-left': '20px'}}
+                            onClick={this.createHandleClick}>Create
+                    </button>
+                    <button className="button-color" style={{'margin': '10px', 'margin-left': '20px'}}
+                            onClick={this.cancelHandleClick}>Cancel
+                    </button>
 
                 </div>
             </div>
