@@ -68,7 +68,7 @@ class OperationsList extends React.Component {
                            id="article"
                            name="article"
                            required="true"
-                           placeholder="New article"/>
+                           placeholder="Article"/>
 
                     <div style={{width: '200px'}}>
                         <label className="item-font-color">Pick A Month</label>
@@ -101,6 +101,7 @@ class OperationsList extends React.Component {
                         showPagination={true}
                         loadingText=""
                         defaultPageSize={10}
+                        defaultSorted={[{id: "createDate", desc: true}, {id: "articleName", desc: false}]}
                     />
 
                 </div>

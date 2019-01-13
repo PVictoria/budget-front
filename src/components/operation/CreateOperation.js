@@ -14,6 +14,8 @@ class CreateOperation extends React.Component {
         this.state = {
             id: localStorage.getItem('userSecretId'),
             selectedDate: null,
+            selectedArticle: null,
+            sum: false,
             items: [],
 
         }
@@ -47,7 +49,8 @@ class CreateOperation extends React.Component {
             return;
         }
         console.log("sum " + this._sum);
-        console.log("sA " + this._selectedArticle);
+        console.log("sNN " + this.state.sum);
+        console.log("sA " + this.state.selectedArticle);
 
         return (
             <div className="row" style={{height: '100%'}}>
@@ -57,15 +60,16 @@ class CreateOperation extends React.Component {
                     <Dropdown id={"article"}
                               style={{'margin': '10px', 'width': '50px', 'padding': '0px'}}
                               name={"article"}
-                              value={this._selectedArticle}
+                              value={this.state.selectedArticle}
                               options={this.state.items.map(value => value.name)}
-                              onChange={item => this._selectedArticle = item.value}
+                              onChange={item => this.setState({selectedArticle: item.value})}
                               placeholder="Select an article"
                     />
                     <div>
                         <input id={"sum"}
                                style={{'margin-right': '20px'}}
                                ref={input => (this._sum = input)}
+                               onChange={event => (this.inputHandleClick(event))}
                                placeholder="Credit/debit"/>
                         <DatePicker style={{'margin': '10px'}}
                                     id={"dateOperation"}
@@ -76,7 +80,7 @@ class CreateOperation extends React.Component {
                                     dropdownMode={"select"}/>
                         <button className="button-color" style={{'margin': '10px', 'margin-left': '20px'}}
                                 onClick={this.createHandleClick}
-                                disabled={!this._selectedArticle}
+                                disabled={!this.state.selectedArticle || !this.state.selectedDate || !this.state.sum}
                         >Create
                         </button>
                         <button className="button-color" style={{'margin': '10px'}}
@@ -88,12 +92,11 @@ class CreateOperation extends React.Component {
         );
     }
 
-// !this.state.selectedDate
     createHandleClick = () => {
-        console.log("mm " + this._selectedArticle);
+        console.log("mm " + this.state.selectedArticle);
         var date = document.getElementById("dateOperation").value;
         console.log(document.getElementById("dateOperation").value);
-        if (this._selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || !date) {
+        if (this.state.selectedArticle === undefined || this._sum.value === "" || this._sum.value === '0' || !date) {
             alert("Не все поля заполнены");
             return;
         }
@@ -111,7 +114,7 @@ class CreateOperation extends React.Component {
         }
         var operation = {
             userId: this.state.id,
-            articleName: this._selectedArticle,
+            articleName: this.state.selectedArticle,
             createDate: date,
             debit: debit,
             credit: credit
@@ -142,6 +145,17 @@ class CreateOperation extends React.Component {
         document.getElementById("sum").value = "";
         document.getElementById("dateOperation").value = "";
         this.setState({selectedDate: null});
+        this.setState({monthDate: false});
+    };
+
+    inputHandleClick = (event) => {
+        console.log("handle" + event.input + event.value + event.target.value);
+        console.log("in " + parseInt(this._sum));
+        if (parseInt(event.target.value)) {
+            this.setState({sum: true});
+        } else {
+            this.setState({sum: false});
+        }
     };
 }
 

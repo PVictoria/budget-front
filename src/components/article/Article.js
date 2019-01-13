@@ -64,7 +64,11 @@ class Article extends React.Component {
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
-                    <button className="deletion-button" style={{margin: '10px'}}
+
+                    <button className="button-position" style={{'margin': '10px', 'right': '150px'}}
+                            onClick={this.createHandleClick}>Create
+                    </button>
+                    <button className="deletion-button button-position" style={{margin: '10px'}}
                             onClick={this.deleteHandleClick}>Delete
                     </button>
                     <h1 className="page-header">Articles</h1>
@@ -105,6 +109,10 @@ class Article extends React.Component {
         console.log("DELETEON......................");
         console.log(this.selectedNames);
     };
+
+    createHandleClick = () => {
+        this.props.history.push('/create-article');
+    }
 
 
     deleteArticle(value) {

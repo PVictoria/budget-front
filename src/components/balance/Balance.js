@@ -13,7 +13,8 @@ class Balance extends React.Component {
             id: localStorage.getItem('userSecretId'),
             selected: [],
             selectedNames: [],
-            items: []
+            items: [],
+            monthDate: false
         };
         this.deleteHandleClick = this.deleteHandleClick.bind(this);
     }
@@ -62,7 +63,6 @@ class Balance extends React.Component {
             }
         ];
 
-
         return (
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%', height: '100%'}}><Navigation/></div>
@@ -71,7 +71,8 @@ class Balance extends React.Component {
                     <div style={{width: '200px'}}>
                         <label className="item-font-color">Pick A Month</label>
                         <button className="button-position" style={{right: '20%'}}
-                                onClick={this.createHandleClick}>Create
+                                onClick={this.createHandleClick}
+                                disabled={!this.state.monthDate}>Create
                         </button>
                         <button className="deletion-button" onClick={this.deleteHandleClick}>Delete</button>
                         <MonthPickerInput className="calendar-container-s button-position input"
@@ -79,6 +80,11 @@ class Balance extends React.Component {
                                           onChange={(item, i, k) => {
                                               console.log(item + ' ' + i + ' ' + k);
                                               this._selectedMonthYear = (k + 1) + '-' + i;
+                                              if (this._selectedMonthYear) {
+                                                  this.setState({monthDate: true});
+                                              } else {
+                                                  this.setState({monthDate: false});
+                                              }
                                           }}
                         />
                     </div>
