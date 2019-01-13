@@ -45,20 +45,21 @@ class Balance extends React.Component {
     render() {
         console.log("renderTable");
 
-        const columns = [{
-            Header: 'Debit',
-            accessor: 'debit',
-        }, {
-            Header: 'Credit',
-            accessor: 'credit',
-        }, {
-            Header: 'Amount',
-            accessor: 'amount',
-        }, {
-            Header: 'Date',
-            accessor: 'createDate',
-            Cell: props => <span>{props.value.toString().slice(0, 10)}</span>
-        }
+        const columns = [
+            {
+                Header: 'Date',
+                accessor: 'createDate',
+                Cell: props => <span>{props.value.toString().slice(0, 10)}</span>
+            }, {
+                Header: 'Debit',
+                accessor: 'debit',
+            }, {
+                Header: 'Credit',
+                accessor: 'credit',
+            }, {
+                Header: 'Amount',
+                accessor: 'amount',
+            }
         ];
 
 

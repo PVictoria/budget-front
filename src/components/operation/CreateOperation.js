@@ -29,8 +29,7 @@ class CreateOperation extends React.Component {
             dataType: "JSON",
         })
             .then((resp) => {
-                const copy = resp.json();
-                return copy;
+                return resp.json();
             })
             .then((data) => {
                 this.setState({items: data});
@@ -47,6 +46,8 @@ class CreateOperation extends React.Component {
             this.props.history.push('/login');
             return;
         }
+        console.log("sum " + this._sum);
+        console.log("sA " + this._selectedArticle);
 
         return (
             <div className="row" style={{height: '100%'}}>
@@ -74,7 +75,9 @@ class CreateOperation extends React.Component {
                                     placeholderText={"Select date"}
                                     dropdownMode={"select"}/>
                         <button className="button-color" style={{'margin': '10px', 'margin-left': '20px'}}
-                                onClick={this.createHandleClick}>Create
+                                onClick={this.createHandleClick}
+                                disabled={!this._selectedArticle}
+                        >Create
                         </button>
                         <button className="button-color" style={{'margin': '10px'}}
                                 onClick={this.cancelHandleClick}>Cancel
@@ -85,6 +88,7 @@ class CreateOperation extends React.Component {
         );
     }
 
+// !this.state.selectedDate
     createHandleClick = () => {
         console.log("mm " + this._selectedArticle);
         var date = document.getElementById("dateOperation").value;
@@ -96,6 +100,10 @@ class CreateOperation extends React.Component {
         var debit = null;
         var credit = null;
         console.log(parseInt(this._sum.value));
+        if (parseInt(this._sum.value) === 0) {
+            alert("Операция не может быть нулевой");
+            return;
+        }
         if (parseInt(this._sum.value) > 0) {
             debit = this._sum.value
         } else {
@@ -122,7 +130,7 @@ class CreateOperation extends React.Component {
             if (res.ok) {
                 this.props.history.push("/operations")
             } else {
-                alert("Не удалось сохранить операцию");
+                alert("Поля некоррекно заполнены. Не удалось сохранить операцию");
             }
         });
     };

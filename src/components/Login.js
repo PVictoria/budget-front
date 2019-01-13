@@ -41,12 +41,12 @@ class Login extends Component {
                            placeholder="Password"/>
                 </div>
                 <div>
-                    <button style={{'margin-top': '10px', 'left': '92px'}} className="button-color button-position"
+                    <button style={{'margin-top': '10px', 'left': '135px'}} className="button-color button-position"
                             onClick={this.loginHandleClick}>LOGIN
                     </button>
                 </div>
                 <div className="align-middle">
-                    <button style={{'margin-top': '10px', 'left': '205px'}} className="button-color button-position"
+                    <button style={{'margin-top': '10px', 'left': '250px'}} className="button-color button-position"
                             onClick={this.registrationHandleClick}>CREATE
                     </button>
                 </div>
@@ -56,7 +56,8 @@ class Login extends Component {
 
     loginHandleClick = () => {
         if (this._username.value.length === 0 || this._password.value.length === 0) {
-            alert("Имя или пароль не должны быть пустыми")
+            alert("Имя или пароль не должны быть пустыми");
+            return;
         }
         fetch('http://localhost:8080/user', {
             method: 'POST',

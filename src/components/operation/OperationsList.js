@@ -82,9 +82,9 @@ class OperationsList extends React.Component {
                         <MonthPickerInput
                             id="dateOperation"
                             className="calendar-container-s button-position input"
-                            month={this.state.month}
-                            year={this.state.year}
-                            // value={""}
+                            // month={this.state.month}
+                            // year={this.state.year}
+                            // value={this._selectedMonthYear}
                             style={{width: '200px'}}
                             onChange={(item, i, k) => {
                                 console.log(item + ' ' + i + ' ' + k);
@@ -168,6 +168,7 @@ class OperationsList extends React.Component {
     }
 
     findByDate() {
+        console.log("find by date");
         fetch("http://localhost:8080/operation/" + this.state.id + '/monthYear/' + this._selectedMonthYear, {
             method: "GET",
             dataType: "JSON",
@@ -239,6 +240,7 @@ class OperationsList extends React.Component {
 
     clearHandleClick = () => {
         console.log("clear");
+        this._selectedMonthYear = "";
         this.setState({year: undefined, month: undefined});
         window.location.reload();
     };
