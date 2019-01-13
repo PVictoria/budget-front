@@ -62,7 +62,7 @@ export default class LinearChart extends Component {
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%'}}>
                     <div className="App">
-                        <h1>My First LineChart</h1>
+                        <h1 className="page-header">Credit and debit for chosen article and period</h1>
                         <Dropdown id={"article"}
                                   name={"article"}
                                   options={this.state.articles.map(value => value.name)}

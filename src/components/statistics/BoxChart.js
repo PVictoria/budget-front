@@ -64,7 +64,7 @@ export default class BoxChart extends Component {
             <div className="row" style={{height: '100%'}}>
                 <div className="col-sm-3  menu-style" style={{width: '100%'}}><Navigation/></div>
                 <div className="col-sm-15 all-elements-padding" style={{width: '75%', 'margin-top': '20px'}}>
-
+                    <h1 className="page-header">Balance visualisation</h1>
                     <Dropdown id={"time"}
                               name={"time"}
                               options={timeRanges}
