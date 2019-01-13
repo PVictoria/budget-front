@@ -120,6 +120,20 @@ a:hover {
 .bar,
 .axis text {
     fill: #ddd;
+    width: 50px;
+}
+
+.axis text {
+    fill: #66fcf1;
+    font-size: 10px;
+}
+
+text, foreignObject {
+    width: 50px;
+}
+
+.tick text {
+    font-size: 10px !important;
 }
 
 .legend {
