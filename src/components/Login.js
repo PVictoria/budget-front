@@ -5,8 +5,7 @@ class Login extends Component {
         super(props);
 
         this.state = {
-            id: null,
-            items: []
+            id: null
         };
         this.loginHandleClick = this.loginHandleClick.bind(this);
         this.registrationHandleClick = this.registrationHandleClick.bind(this);
@@ -21,32 +20,31 @@ class Login extends Component {
         return (
             <div>
                 <div
-
                     className="input-group container align-middle">
                     <input
-                        style={{'margin-top': '20px', 'left': '92px'}}
+                        style={{'marginTop': '20px', 'left': '92px'}}
                         ref={input => (this._username = input)}
-                           name="username"
-                           required="true"
-                           placeholder="Username"/>
+                        name="username"
+                        required="true"
+                        placeholder="Username"/>
                 </div>
                 <div
                     className="input-group container align-middle">
                     <input
-                        style={{'margin-top': '10px', 'left': '92px'}}
+                        style={{'marginTop': '10px', 'left': '92px'}}
                         ref={input => (this._password = input)}
-                           name="password"
-                           type="password"
-                           required="true"
-                           placeholder="Password"/>
+                        name="password"
+                        type="password"
+                        required="true"
+                        placeholder="Password"/>
                 </div>
                 <div>
-                    <button style={{'margin-top': '10px', 'left': '135px'}} className="button-color button-position"
+                    <button style={{'marginTop': '10px', 'left': '135px'}} className="button-color button-position"
                             onClick={this.loginHandleClick}>LOGIN
                     </button>
                 </div>
                 <div className="align-middle">
-                    <button style={{'margin-top': '10px', 'left': '250px'}} className="button-color button-position"
+                    <button style={{'marginTop': '10px', 'left': '250px'}} className="button-color button-position"
                             onClick={this.registrationHandleClick}>CREATE
                     </button>
                 </div>
@@ -103,7 +101,6 @@ class Login extends Component {
                 })
                 .then(data => {
                     if (data.status === 500) {
-                        console.log("ERRRR");
                         alert("Пользователь с таким именем уже существкет");
                         return;
                     }
@@ -119,7 +116,6 @@ class Login extends Component {
                 });
         }
     }
-
 }
 
 export default Login
